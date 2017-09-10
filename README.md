@@ -102,14 +102,20 @@ options.
 
 ## Add Users
 
-To add a user on startup, pass arguments when running the container.
+To add a user on startup, pass the username as an environmental argument:
 
 ```
--e USERNAME='a_username'
--e PASSWORD='a_password'
+-e SAMBA_USERNAME='a_username'
 ```
 
-Once the server is running, you can also add your users using the following:
+The password can either be set through Docker Secrets as SAMBA_PASSWORD or it
+can also be passed as an environmental variable. The container will first look
+for the secret file and if it does not exist, it will then check the environment.
+```
+-e SAMBA_PASSWORD='a_password'
+```
+
+Once the server is running, you can also add additional users using the following:
 
 ```
 docker exec -it samba adduser -s /sbin/nologin -h /home/samba -H -D a_username
