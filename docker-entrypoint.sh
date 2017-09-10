@@ -15,14 +15,14 @@ if [ "$SAMBA_USERNAME" ]; then
     echo "Reading $SAMBA_USERNAME's password from secrets..."
     
     # Add it to the user.
-    printf "%s\n%s\n" "$(cat $PWD_FILE)" "$(cat $PWD_FILE)" | smbpasswd -sa $USERNAME
+    printf "%s\n%s\n" "$(cat $PWD_FILE)" "$(cat $PWD_FILE)" | smbpasswd -sa $SAMBA_USERNAME
     
   # Check for the password as an environmental variable.  
   elif [[ -n "${SAMBA_PASSWORD}" ]]; then
     echo "Reading $SAMBA_USERNAME's password from env..."
     
     # Add it to the user.
-    printf "%s\n%s\n" "$SAMBA_PASSWORD" "$SAMBA_PASSWORD" | smbpasswd -sa $USERNAME
+    printf "%s\n%s\n" "$SAMBA_PASSWORD" "$SAMBA_PASSWORD" | smbpasswd -sa $SAMBA_USERNAME
   else
     echo "No password has been passed, not adding a password to the created user..."
   fi
