@@ -8,7 +8,7 @@ if [ "$SAMBA_USERNAME" ]; then
   echo "Creating user $SAMBA_USERNAME..."
   
   # Add user.
-  adduser -s /sbin/nologin -h /home/samba -H -D $USERNAME
+  adduser -s /sbin/nologin -h /home/samba -H -D $SAMBA_USERNAME
 
   # Check for secrets.
   if [ -f "$PWD_FILE" ]; then
