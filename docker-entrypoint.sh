@@ -32,4 +32,4 @@ fi
 
 
 # Run samba.
-smbd --foreground --log-stdout
+smbd --foreground --log-stdout </dev/null
